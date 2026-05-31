@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0F172A"
+    android:padding="20dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Заголовок -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🚗 DriveDetector"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                android:textColor="#4ECDC4"
+                android:gravity="center"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Детектор начала поездки"
+                android:textSize="16sp"
+                android:textColor="#94A3B8"
+                android:gravity="center"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Карточка статуса -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="#1E293B"
+                app:cardElevation="5dp"
+                android:layout_marginBottom="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="📊 ТЕКУЩИЙ СТАТУС"
+                        android:textSize="14sp"
+                        android:textColor="#94A3B8"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/statusLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ОЖИДАНИЕ"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="#F1C40F"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#334155"
+                        android:layout_marginVertical="15dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="УРОВЕНЬ ВИБРАЦИИ"
+                        android:textSize="12sp"
+                        android:textColor="#94A3B8"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/vibrationLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="0.000"
+                        android:textSize="36sp"
+                        android:textStyle="bold"
+                        android:textColor="#4ECDC4"
+                        android:gravity="center"
+                        android:fontFamily="monospace"
+                        android:layout_marginTop="5dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Счётчик -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="#1E293B"
+                app:cardElevation="5dp"
+                android:layout_marginBottom="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="🚦 СТАБИЛЬНЫЕ КОЛЕБАНИЯ"
+                        android:textSize="14sp"
+                        android:textColor="#94A3B8"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/counterLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="0/25"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        android:textColor="#F1C40F"
+                        android:gravity="center"
+                        android:fontFamily="monospace"
+                        android:layout_marginVertical="10dp"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:progress="0"
+                        android:progressTint="#4ECDC4"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Кнопки -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="15dp">
+
+                <Button
+                    android:id="@+id/startButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="3"
+                    android:text="ЗАПУСТИТЬ"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#4ECDC4"
+                    android:textColor="#1E293B"
+                    android:layout_marginEnd="10dp"
+                    android:onClick="startDetection"/>
+
+                <Button
+                    android:id="@+id/stopButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="3"
+                    android:text="ОСТАНОВИТЬ"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#E74C3C"
+                    android:textColor="#FFFFFF"
+                    android:enabled="false"
+                    android:onClick="stopDetection"/>
+
+            </LinearLayout>
+
+            <!-- Информация -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="15dp"
+                app:cardBackgroundColor="#1E293B"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ℹ️ КАК ЭТО РАБОТАЕТ"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#4ECDC4"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="• Детектор анализирует вибрации телефона"
+                        android:textSize="12sp"
+                        android:textColor="#94A3B8"
+                        android:layout_marginTop="10dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="• При резких колебаниях счётчик увеличивается"
+                        android:textSize="12sp"
+                        android:textColor="#94A3B8"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="• При затишье счётчик сбрасывается"
+                        android:textSize="12sp"
+                        android:textColor="#94A3B8"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="• 25 последовательных колебаний = ПОЕЗДКА!"
+                        android:textSize="12sp"
+                        android:textColor="#F1C40F"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="\n⚠️ Для работы необходим акселерометр"
+                        android:textSize="11sp"
+                        android:textColor="#E74C3C"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
